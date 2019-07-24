@@ -59,7 +59,7 @@ const Subtitle = styled.span`
 const Home = ({ data }) => (
   <Flex>
     <Helmet
-      title={`${data.site.siteMetadata.title} - Updated: ${data.site.buildTime}`}
+      title={`${data.site.siteMetadata.title} | ${data.site.siteMetadata.description}`}
     />
     <Header>
       <Title>{data.site.siteMetadata.title}</Title>
