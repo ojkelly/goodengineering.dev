@@ -52,6 +52,18 @@ const Title = styled.h1`
   }
 `;
 
+const Updated = styled.div`
+  text-transform: lowercase;
+  font-family: ${(props: ThemeProviderProps) => props.theme.fonts.Monospace};
+  color: ${(props: ThemeProviderProps) => props.theme.color.Comment};
+  font-size: 0.6rem;
+  margin: 0.8rem auto;
+  font-weight: normal;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+`;
+
 const Subtitle = styled.span`
   font-family: ${(props: ThemeProviderProps) => props.theme.fonts.Monospace};
   color: ${(props: ThemeProviderProps) => props.theme.color.Comment};
@@ -71,6 +83,7 @@ const Home = ({ data }) => (
       <Subtitle>{data.site.siteMetadata.description}</Subtitle>
     </Header>
     <Body>
+      <Updated>updated hourly</Updated>
       {data.allFeedItem.nodes.map(post => (
         <Card {...post} key={post.link} />
       ))}
