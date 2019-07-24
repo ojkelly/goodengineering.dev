@@ -116,42 +116,63 @@ async function onCreateNode({
   }
 
   items
-    .map(item => ({
-      ...item,
-      pubDate: new Date(item.pubDate).toISOString(),
-    }))
-    .filter(v => !!v.pubDate)
+    .map(item => {
+      if (!item.pubDate) {
+        return undefined;
+      }
+      try {
+        return {
+          ...item,
+          pubDate: new Date(item.pubDate).toISOString(),
+        };
+      } catch {
+        // this item will be filtered out
+      }
+      return undefined;
+    })
+    .filter(Boolean)
     .sort((a, b) => a.pubDate < b.pubDate);
 
   const itemsToAdd = [items.pop()];
 
   await Promise.all(
     itemsToAdd.map(async item => {
-      if (!item.pubDate || !item.title || !item.link || !item.contentSnippet) {
-        return;
+      try {
+        if (
+          !item ||
+          !item.pubDate ||
+          !item.title ||
+          !item.link ||
+          !item.contentSnippet
+        ) {
+          return;
+        }
+
+        const itemFields = {
+          title: `${item.title}`,
+          pubDate: new Date(item.pubDate).toISOString(),
+          description: `${item.contentSnippet}`,
+          folder: item.folder,
+          link: item.link,
+          guid: `${item.guid}`,
+        };
+        const itemNode = {
+          ...itemFields,
+          children: [],
+          id: `${id}/${item.id || item.guid}`,
+          parent: id,
+          internal: {
+            contentDigest: createContentDigest(itemFields),
+            type: "feedItem",
+          },
+        };
+
+        await createNode(itemNode);
+        createParentChildLink({ parent: feedNode, child: itemNode });
+      } catch {
+        // If a post is badly formatted, we're ignoring it.
+        return true;
       }
-
-      const itemFields = {
-        title: `${item.title}`,
-        pubDate: new Date(item.pubDate).toISOString(),
-        description: `${item.contentSnippet}`,
-        folder: item.folder,
-        link: item.link,
-        guid: `${item.guid}`,
-      };
-      const itemNode = {
-        ...itemFields,
-        children: [],
-        id: `${id}/${item.id || item.guid}`,
-        parent: id,
-        internal: {
-          contentDigest: createContentDigest(itemFields),
-          type: "feedItem",
-        },
-      };
-
-      await createNode(itemNode);
-      createParentChildLink({ parent: feedNode, child: itemNode });
     })
   );
 }

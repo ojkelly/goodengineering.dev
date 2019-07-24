@@ -1,10 +1,10 @@
 {
-  "name": "owenkelly.com.au",
-  "description": "My website",
+  "name": "goodengineering.dev",
+  "description": "Stories from the top engineering blogs in one place",
   "version": "0.1.0",
   "scripts": {
     "build": "gatsby build",
-    "prebuild": "yarn feeds",
+    "preaabuild": "yarn feeds",
     "build-debug": "NODE_ENV=development; gatsby build --no-uglify",
     "serve": "NODE_ENV=production; gatsby serve",
     "clean": "rm -rf .cache && yarn start",

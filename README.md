@@ -1,5 +1,10 @@
-# Owen Kelly
+# Good Engineering
+Stories from the top engineering blogs in one place.
 
 
-Based on:
-  - https://github.com/damassi/gatsby-starter-typescript-rebass-netlifycms
+## Adding your blog
+
+Submit a Pull Request, with `source.opml` updated.
+
+---
+goodengineering.dev
