@@ -19,7 +19,7 @@ module.exports = {
           },
           {
             family: `IBM Plex Mono`,
-            variants: [`400`, `400i`, `800`],
+            variants: [`400`, `400i`, `700`],
           },
         ],
       },

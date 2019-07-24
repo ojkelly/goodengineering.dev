@@ -32,7 +32,7 @@ async function Process({ source, output }: { source: string; output: string }) {
 
   rimraf.sync(path.join(__dirname, output));
 
-  await Promise.all(
+  return await Promise.all(
     opml.children
       .map(
         folder =>
@@ -53,9 +53,10 @@ async function Process({ source, output }: { source: string; output: string }) {
                 { encoding: "utf8" }
               );
               return true;
-            } catch {
+            } catch (err) {
+              // console.error(err);
               // If this blog continues to error, we'll remove it
-              console.error("REMOVE BLOG", feed.htmlurl);
+              console.error("FAILED: ", feed.xmlurl);
               return true;
             }
           })

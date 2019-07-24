@@ -35,8 +35,12 @@ const Home = ({ data }) => (
 
 export default Home;
 export const pageQuery = graphql`
-  query All {
-    allFeedItem(sort: { fields: pubDate, order: DESC }, limit: 100) {
+  query Copmany {
+    allFeedItem(
+      sort: { fields: pubDate, order: DESC }
+      limit: 100
+      filter: { folder: { eq: "Company" } }
+    ) {
       nodes {
         pubDate(fromNow: true)
         link

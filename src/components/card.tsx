@@ -11,6 +11,7 @@ const Link = styled.a`
   display: flex;
   flex-direction: column;
   margin: 1.3rem 0;
+  transition: all 0.2s ease-out;
 
   &:hover {
     background-color: ${(props: ThemeProviderProps) =>
@@ -71,8 +72,10 @@ const Card = ({
       <Hostname>{blogUrlParsed.hostname.replace("www.", "")}</Hostname>
       <Title>{title}</Title>
       <Subtitle>
-        <DateWrapper>{pubDate}</DateWrapper> &middot;{" "}
-        <BlogName>{blog}</BlogName>
+        <DateWrapper>
+          {pubDate.includes("minute") ? "in the last hour" : pubDate}
+        </DateWrapper>{" "}
+        &middot; <BlogName>{blog}</BlogName>
       </Subtitle>
     </Link>
   );

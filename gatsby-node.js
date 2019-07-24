@@ -158,7 +158,7 @@ async function onCreateNode({
           title: `${item.title}`,
           pubDate: new Date(item.pubDate).toISOString(),
           description: `${item.contentSnippet}`,
-          folder: item.folder,
+          folder: `${feed.folder}`,
           link: item.link,
           guid: `${item.guid}`,
         };
