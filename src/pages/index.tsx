@@ -26,7 +26,7 @@ const Home = ({ data }) => (
       <Menu />
       <Updated>updated hourly</Updated>
       {data.allFeedItem.nodes.map(post => (
-        <Card {...post} key={post.link} />
+        <Card {...post} key={post.link} showFolder />
       ))}
     </Body>
     <Footer />
@@ -42,6 +42,7 @@ export const pageQuery = graphql`
         link
         id
         title
+        folder
         parent {
           ... on feed {
             title

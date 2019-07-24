@@ -35,7 +35,7 @@ const Title = styled.span`
 
 const Subtitle = styled.span`
   font-family: ${(props: ThemeProviderProps) => props.theme.fonts.Monospace};
-  color: ${(props: ThemeProviderProps) => props.theme.color.Yellow};
+  color: ${(props: ThemeProviderProps) => props.theme.color.Selection};
   align-self: flex-end;
   justify-self: flex-end;
   font-size: 1rem;
@@ -54,16 +54,21 @@ const Hostname = styled.span`
   text-transform: lowercase;
   font-family: ${(props: ThemeProviderProps) => props.theme.fonts.Monospace};
   color: ${(props: ThemeProviderProps) => props.theme.color.Purple};
-  align-self: flex-end;
-  justify-self: flex-end;
   font-size: 1rem;
-  width: 100%;
+`;
+const Folder = styled.span`
+  text-transform: uppercase;
+  font-family: ${(props: ThemeProviderProps) => props.theme.fonts.Monospace};
+  color: ${(props: ThemeProviderProps) => props.theme.color.Selection};
+  font-size: 1rem;
 `;
 
 const Card = ({
   pubDate,
   title,
   link,
+  folder,
+  showFolder = false,
   parent: { title: blog, url: blogUrl },
 }) => {
   const blogUrlParsed = new URL(blogUrl);
@@ -76,6 +81,12 @@ const Card = ({
           {pubDate.includes("minute") ? "in the last hour" : pubDate}
         </DateWrapper>{" "}
         &middot; <BlogName>{blog}</BlogName>
+        {showFolder && (
+          <>
+            {" "}
+            &middot; <Folder>{folder}</Folder>
+          </>
+        )}
       </Subtitle>
     </Link>
   );
