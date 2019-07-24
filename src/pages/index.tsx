@@ -47,6 +47,7 @@ const Title = styled.h1`
   text-align: left;
 
   @media (max-width: 768px) {
+    padding: 3rem auto 0 auto;
     font-size: 2rem;
   }
 `;
