@@ -45,6 +45,10 @@ const Title = styled.h1`
   padding: 1rem auto 0 auto;
   line-height: 1em;
   text-align: left;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const Subtitle = styled.span`
