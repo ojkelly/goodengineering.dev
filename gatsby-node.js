@@ -126,8 +126,6 @@ async function onCreateNode({
           pubDate: new Date(item.pubDate).toISOString(),
         };
       } catch (err) {
-        console.error("failed: ", item.title, err);
-
         // If this blog continues to error, we'll remove it
         console.error("REMOVE BLOG", feed.htmlurl);
         // this item will be filtered out

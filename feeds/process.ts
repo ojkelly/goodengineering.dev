@@ -53,8 +53,7 @@ async function Process({ source, output }: { source: string; output: string }) {
                 { encoding: "utf8" }
               );
               return true;
-            } catch (err) {
-              console.error(err);
+            } catch {
               // If this blog continues to error, we'll remove it
               console.error("REMOVE BLOG", feed.htmlurl);
               return true;
