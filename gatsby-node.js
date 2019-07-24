@@ -115,7 +115,7 @@ async function onCreateNode({
     return;
   }
 
-  items
+  const filteredItems = items
     .map(item => {
       if (!item.pubDate) {
         return undefined;
@@ -125,15 +125,23 @@ async function onCreateNode({
           ...item,
           pubDate: new Date(item.pubDate).toISOString(),
         };
-      } catch {
+      } catch (err) {
+        console.error("failed: ", item.title, err);
+
+        // If this blog continues to error, we'll remove it
+        console.error("REMOVE BLOG", feed.htmlurl);
         // this item will be filtered out
       }
       return undefined;
     })
     .filter(Boolean)
-    .sort((a, b) => a.pubDate < b.pubDate);
+    .sort((a, b) => a.pubDate > b.pubDate);
 
-  const itemsToAdd = [items.pop()];
+  const itemsToAdd = [
+    filteredItems.pop(),
+    filteredItems.pop(),
+    filteredItems.pop(),
+  ];
 
   await Promise.all(
     itemsToAdd.map(async item => {

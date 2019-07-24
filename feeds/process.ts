@@ -54,6 +54,9 @@ async function Process({ source, output }: { source: string; output: string }) {
               );
               return true;
             } catch (err) {
+              console.error(err);
+              // If this blog continues to error, we'll remove it
+              console.error("REMOVE BLOG", feed.htmlurl);
               return true;
             }
           })

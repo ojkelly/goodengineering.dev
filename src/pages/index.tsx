@@ -47,17 +47,6 @@ const Title = styled.h1`
   text-align: left;
 `;
 
-const Updated = styled.div`
-  text-transform: lowercase;
-  font-family: ${(props: ThemeProviderProps) => props.theme.fonts.Monospace};
-  color: ${(props: ThemeProviderProps) => props.theme.color.Yellow};
-  font-size: 0.8rem;
-  margin: 0.8rem auto;
-  font-weight: normal;
-  width: 100%;
-  text-align: center;
-`;
-
 const Subtitle = styled.span`
   font-family: ${(props: ThemeProviderProps) => props.theme.fonts.Monospace};
   color: ${(props: ThemeProviderProps) => props.theme.color.Comment};
@@ -77,7 +66,6 @@ const Home = ({ data }) => (
       <Subtitle>{data.site.siteMetadata.description}</Subtitle>
     </Header>
     <Body>
-      <Updated>updated {data.site.buildTime}</Updated>
       {data.allFeedItem.nodes.map(post => (
         <Card {...post} key={post.link} />
       ))}
@@ -104,7 +92,6 @@ export const pageQuery = graphql`
       }
     }
     site {
-      buildTime(fromNow: true)
       siteMetadata {
         description
         title
