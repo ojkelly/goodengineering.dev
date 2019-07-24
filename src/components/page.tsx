@@ -8,8 +8,9 @@ const Flex = styled.div`
   flex-direction: column;
   margin: 0 auto;
   padding: 0;
-  max-width: 100%;
-  width: 100%;
+  max-width: 100vw;
+  width: ${(props: ThemeProviderProps) => props.theme.dimensions.contentWidth};
+  /* width: 100%; */
 `;
 
 const Header = styled.div`
@@ -20,13 +21,11 @@ const Header = styled.div`
   margin: 0 auto;
   padding: 2rem 0;
   max-width: 100%;
-  width: ${(props: ThemeProviderProps) => props.theme.dimensions.contentWidth};
   border-bottom: 1px solid
     ${(props: ThemeProviderProps) => props.theme.color.CurrentLine};
 `;
 
 const Body = styled.div`
-  width: ${(props: ThemeProviderProps) => props.theme.dimensions.contentWidth};
   margin: auto;
   word-break: break-word;
   max-width: 100%;
@@ -39,7 +38,7 @@ const Title = styled.h1`
   padding: 1rem auto 0 auto;
   margin: 1rem 0 1rem 0;
   line-height: 1em;
-  text-align: left;
+  text-align: center;
 
   @media (max-width: 768px) {
     margin: 3rem 0 1rem 0;
