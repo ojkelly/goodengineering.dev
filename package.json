@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "gatsby build",
-    "preaabuild": "yarn feeds",
+    "prebuild": "yarn feeds",
     "build-debug": "NODE_ENV=development; gatsby build --no-uglify",
     "serve": "NODE_ENV=production; gatsby serve",
     "clean": "rm -rf .cache && yarn start",
