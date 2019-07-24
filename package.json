@@ -14,7 +14,8 @@
     "prettier-write": "prettier --write \"src/**/*.js\"",
     "release": "auto shipit",
     "start": "yarn dev",
-    "feeds": "ts-node --project feeds/tsconfig.json feeds/index.ts"
+    "feeds": "ts-node --project feeds/tsconfig.json feeds/index.ts",
+    "clean-feeds": "cat remove.txt |  while read x ; do sed -i ''  '\\|\"'$x'\"|d' source.opml ; done "
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
@@ -99,11 +100,11 @@
     "gatsby-plugin-create-client-paths": "^2.1.1",
     "gatsby-plugin-extract-schema": "^0.0.5",
     "gatsby-plugin-fathom": "^1.1.0",
-    "gatsby-plugin-manifest": "^2.0.9",
+    "gatsby-plugin-manifest": "^2.2.4",
     "gatsby-plugin-netlify": "^2.1.0",
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-netlify-cms": "^3.0.10",
-    "gatsby-plugin-offline": "^2.0.16",
+    "gatsby-plugin-offline": "^2.2.4",
     "gatsby-plugin-page-creator": "^2.1.2",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.2",
     "gatsby-plugin-react-helmet": "^3.1.0",
