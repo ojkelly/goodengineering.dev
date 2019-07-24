@@ -9,6 +9,7 @@ import { useDarkMode } from "@src/hooks/useDarkMode";
 import { DarkTheme, BrightDarkTheme, TomorrowNight } from "@src/theme/dark";
 import { LightTheme } from "@src/theme/light";
 import * as Fonts from "./fonts";
+import Tippy from "@tippy.js/react";
 
 type ThemeColorConfig = {
   Background: string;
@@ -104,43 +105,120 @@ const DarkModeToggle = ({
     top: 1rem;
     right: 1rem;
   `;
+  const InlineCode = styled.span`
+    color: ${props => props.theme.color.Foreground};
+    background-color: ${props => props.theme.color.Background};
+    border: 1px solid ${props => props.theme.color.Selection};
+    font-family: ${props => props.theme.fonts.Monospace};
+    padding: 0.2em 0.4em;
+    font-size: 0.8em;
+    border-radius: 3px;
+  `;
+
+  const StyledTippy = styled(Tippy)<ThemeProviderProps>`
+    background-color: ${props => props.theme.color.CurrentLine};
+    color: ${props => props.theme.color.Foreground};
+    margin: 0 1rem 0 0;
+    font-size: 0.7rem;
+
+    &[x-placement^="top"] {
+      .tippy-arrow {
+        border-top-color: ${props => props.theme.color.CurrentLine};
+      }
+    }
+  `;
+  const ToolTip = styled.div<ThemeProviderProps>`
+    text-align: left;
+    font-family: ${props => props.theme.fonts.Monospace};
+  `;
+  const Info = styled.span<ThemeProviderProps>`
+    color: ${props => props.theme.color.Comment};
+    font-family: ${props => props.theme.fonts.Monospace};
+  `;
+  const Selected = styled.span<ThemeProviderProps & { selected: boolean }>`
+    color: ${props =>
+      props.selected
+        ? props.theme.color.Foreground
+        : props.theme.color.Comment};
+    font-weight: ${props => (props.selected ? "bold" : "normal")};
+    font-family: ${props => props.theme.fonts.Monospace};
+  `;
 
   return (
-    <SwitchWrapper>
-      <Switch
-        onChange={setDarkMode}
-        checked={isDarkMode}
-        uncheckedIcon={
-          <span
-            style={{
-              display: "inline-block",
-              marginLeft: "0.5em",
-              marginTop: "0.05em",
-              color: theme.color.Background,
-            }}
-          >
-            ☾
-          </span>
-        }
-        checkedIcon={
-          <span
-            style={{
-              display: "inline-block",
-              marginLeft: "0.5em",
-              marginTop: "0.1em",
-              color: theme.color.Background,
-            }}
-          >
-            ☀
-          </span>
-        }
-        onHandleColor={theme.color.Background}
-        offHandleColor={theme.color.Background}
-        onColor={theme.color.Selection}
-        offColor={theme.color.Selection}
-        width={60}
-      />
-    </SwitchWrapper>
+    <StyledTippy
+      arrow
+      arrowType="sharp"
+      content={
+        <ToolTip>
+          <Info>Switch themes with your keyboard.</Info>
+          <br />
+
+          <InlineCode>1</InlineCode>
+          <Info>&nbsp;Light</Info>
+          <Selected selected={theme.name === ThemeName.TOMORROW}>
+            &nbsp;Tomorrow
+          </Selected>
+          <br />
+
+          <InlineCode>2</InlineCode>
+          <Info>&nbsp;Dark</Info>
+          <Selected selected={theme.name === ThemeName.TOMORROW_NIGHT_EIGHTIES}>
+            &nbsp;&nbsp;Tomorrow Night 80s
+          </Selected>
+          <br />
+
+          <InlineCode>3</InlineCode>
+          <Info>&nbsp;Dark</Info>
+          <Selected selected={theme.name === ThemeName.TOMORROW_NIGHT}>
+            &nbsp;&nbsp;Tomorrow Night
+          </Selected>
+          <br />
+
+          <InlineCode>4</InlineCode>
+          <Info>&nbsp;Dark</Info>
+          <Selected selected={theme.name === ThemeName.TOMORROW_NIGHT_BRIGHT}>
+            &nbsp;&nbsp;Tomorrow Night High Contrast
+          </Selected>
+          <br />
+        </ToolTip>
+      }
+    >
+      <SwitchWrapper>
+        <Switch
+          onChange={setDarkMode}
+          checked={isDarkMode}
+          uncheckedIcon={
+            <span
+              style={{
+                display: "inline-block",
+                marginLeft: "0.5em",
+                marginTop: "0.05em",
+                color: theme.color.Background,
+              }}
+            >
+              ☾
+            </span>
+          }
+          checkedIcon={
+            <span
+              style={{
+                display: "inline-block",
+                marginLeft: "0.5em",
+                marginTop: "0.1em",
+                color: theme.color.Background,
+              }}
+            >
+              ☀
+            </span>
+          }
+          onHandleColor={theme.color.Background}
+          offHandleColor={theme.color.Background}
+          onColor={theme.color.Selection}
+          offColor={theme.color.Selection}
+          width={60}
+        />
+      </SwitchWrapper>
+    </StyledTippy>
   );
 };
 
