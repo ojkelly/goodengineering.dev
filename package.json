@@ -120,6 +120,7 @@
     "gray-percentage": "^2.0.0",
     "hast-util-to-string": "^1.0.1",
     "history": "^4.7.2",
+    "html-entities": "^1.2.1",
     "lodash": "^4.17.11",
     "marked": "^0.6.0",
     "marksy": "^6.1.0",

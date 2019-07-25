@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 import { ThemeProviderProps } from "@src/theme";
-
+const Entities = require("html-entities").AllHtmlEntities;
+const entities = new Entities();
 const Link = styled.a`
   text-decoration: none;
   flex: 1;
@@ -75,7 +76,7 @@ const Card = ({
   return (
     <Link href={link} target="_blank">
       <Hostname>{blogUrlParsed.hostname.replace("www.", "")}</Hostname>
-      <Title>{title}</Title>
+      <Title>{entities.decode(title)}</Title>
       <Subtitle>
         <DateWrapper>
           {pubDate.includes("minute") ? "in the last hour" : pubDate}
