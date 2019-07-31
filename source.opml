@@ -638,6 +638,7 @@
       <outline type="rss" text="Zolmeister" title="Zolmeister" xmlUrl="https://zolmeister.com/feeds/posts/default" htmlUrl="https://zolmeister.com/"/>
       <outline type="rss" text="Overreacted" title="Overreacted" xmlUrl="https://overreacted.io/rss.xml" htmlUrl="https://overreacted.io/"/>
       <outline type="rss" text="Sonniesedge" title="Sonniesedge" xmlUrl="https://www.sonniesedge.net/rss/everything.xml" htmlUrl="https://www.sonniesedge.net/"/>
+      <outline type="rss" text="Proper Fixation" title="Proper Fixation" xmlUrl="https://yosefk.com/blog/feed" htmlUrl="https://yosefk.com/"/>
     </outline>
   </body>
 </opml>
