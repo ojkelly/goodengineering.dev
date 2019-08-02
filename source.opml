@@ -639,6 +639,8 @@
       <outline type="rss" text="Overreacted" title="Overreacted" xmlUrl="https://overreacted.io/rss.xml" htmlUrl="https://overreacted.io/"/>
       <outline type="rss" text="Sonniesedge" title="Sonniesedge" xmlUrl="https://www.sonniesedge.net/rss/everything.xml" htmlUrl="https://www.sonniesedge.net/"/>
       <outline type="rss" text="Proper Fixation" title="Proper Fixation" xmlUrl="https://yosefk.com/blog/feed" htmlUrl="https://yosefk.com/"/>
+      <outline type="rss" text="Bruce Schneier" title="Bruce Schneier" xmlUrl="https://www.schneier.com/blog/atom.xml" htmlUrl="https://www.schneier.com/"/>
+      <outline type="rss" text="Brian Krebs" title="Brian Krebs" xmlUrl="https://krebsonsecurity.com/feed/" htmlUrl="hhttps://krebsonsecurity.com/"/>
     </outline>
   </body>
 </opml>
