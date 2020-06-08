@@ -638,7 +638,15 @@
       <outline type="rss" text="Sonniesedge" title="Sonniesedge" xmlUrl="https://www.sonniesedge.net/rss/everything.xml" htmlUrl="https://www.sonniesedge.net/"/>
       <outline type="rss" text="Proper Fixation" title="Proper Fixation" xmlUrl="https://yosefk.com/blog/feed" htmlUrl="https://yosefk.com/"/>
       <outline type="rss" text="Bruce Schneier" title="Bruce Schneier" xmlUrl="https://www.schneier.com/blog/atom.xml" htmlUrl="https://www.schneier.com/"/>
-      <outline type="rss" text="Brian Krebs" title="Brian Krebs" xmlUrl="https://krebsonsecurity.com/feed/" htmlUrl="hhttps://krebsonsecurity.com/"/>
+      <outline type="rss" text="Brian Krebs" title="Brian Krebs" xmlUrl="https://krebsonsecurity.com/feed/" htmlUrl="https://krebsonsecurity.com/"/>
+      <outline type="rss" text="Words and Buttons" title="Words and Buttons" xmlUrl="https://wordsandbuttons.online/rss" htmlUrl="https://wordsandbuttons.online"/>
+      <outline type="rss" text="Rock and Null" title="Rock and Null" xmlUrl="https://www.rockandnull.com/rss/" htmlUrl="https://www.rockandnull.com"/>
+      <outline type="rss" text="Christoph Petrausch" title="Christoph Petrausch" xmlUrl="https://journal.petrausch.info/index.xml" htmlUrl="https://journal.petrausch.info"/>
+      <outline type="rss" text="James Clear" title="James Clear" xmlUrl="https://jamesclear.com/feed" htmlUrl="https://jamesclear.com"/>
+      <outline type="rss" text="Carl Chester Lloyd" title="Carl Chester Lloyd" xmlUrl="https://carlchesterlloyd.com/rss.xml" htmlUrl="https://carlchesterlloyd.com"/>
+      <outline type="rss" text="Michael Le" title="Michael Le" xmlUrl="https://www.michael1e.com/rss/" htmlUrl="https://www.michael1e.com"/>
+      <outline type="rss" text="Adnan's Random bytes" title="Adnan's Random bytes" xmlUrl="http://blog.adnansiddiqi.me/rss/" htmlUrl="http://blog.adnansiddiqi.me"/>
+      <outline type="rss" text="DEV Community" title="DEV Community" xmlUrl="https://dev.to/feed.rss/" htmlUrl="https://dev.to"/>
     </outline>
   </body>
 </opml>
