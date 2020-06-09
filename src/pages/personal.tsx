@@ -24,7 +24,7 @@ const Home = ({ data }) => (
     </Header>
     <Body>
       <Menu />
-      <Updated>updated hourly</Updated>
+      <Updated>updated daily</Updated>
       {data.allFeedItem.nodes.map(post => (
         <Card {...post} key={post.link} />
       ))}
