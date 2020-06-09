@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as opmlToJSON from "opml-to-json";
 import * as rimraf from "rimraf";
-
+import { timeout } from "promise-timeout";
 import * as Parser from "rss-parser";
 
 import { OPML } from "./opml";
@@ -39,24 +39,64 @@ async function Process({ source, output }: { source: string; output: string }) {
           folder.children &&
           folder.children.map(async feed => {
             try {
-              const url = new URL(feed.htmlurl);
+              await timeout(
+                new Promise(async (resolve, reject) => {
+                  try {
+                    const url = new URL(feed.htmlurl);
 
-              const items = await parser.parseURL(feed.xmlurl);
+                    const items = await parser.parseURL(feed.xmlurl);
 
-              await fs.mkdirSync(path.join(__dirname, output, url.hostname), {
-                recursive: true,
-              });
+                    await fs.mkdirSync(
+                      path.join(__dirname, output, url.hostname),
+                      {
+                        recursive: true,
+                      }
+                    );
 
-              await fs.writeFileSync(
-                path.join(__dirname, output, url.hostname, "feed.json"),
-                JSON.stringify({ ...feed, ...items }, null, 2),
-                { encoding: "utf8" }
+                    await fs.writeFileSync(
+                      path.join(__dirname, output, url.hostname, "feed.json"),
+                      JSON.stringify({ ...feed, ...items }, null, 2),
+                      { encoding: "utf8" }
+                    );
+
+                    resolve();
+                  } catch (err) {
+                    reject(err);
+                  }
+                }),
+                60000
               );
               return true;
             } catch (err) {
-              // console.error(err);
-              // If this blog continues to error, we'll remove it
-              console.error("FAILED: ", feed.xmlurl);
+              if (!err.toString().includes("429")) {
+                console.error("FAILED: ", feed.xmlurl);
+
+                console.error(err);
+                // If this blog continues to error, we'll remove it
+                const opmlRaw = fs.readFileSync(path.join(__dirname, source));
+
+                const opmlLines = opmlRaw.toString().split("\n");
+
+                const opmlUpdate = opmlLines
+                  .map(line => {
+                    if (line.includes(feed.xmlurl)) {
+                      return;
+                    }
+
+                    return line;
+                  })
+                  .filter(Boolean)
+                  .join("\n");
+
+                await fs.writeFileSync(
+                  path.join(__dirname, source),
+                  opmlUpdate,
+                  {
+                    encoding: "utf8",
+                  }
+                );
+              }
+
               return true;
             }
           })

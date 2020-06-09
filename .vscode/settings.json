@@ -43,5 +43,8 @@
   "typescript.format.insertSpaceAfterKeywordsInControlFlowStatements": false,
   "typescript.tsc.autoDetect": "on",
   "typescript.validate.enable": true,
-  "markdown.extension.toc.githubCompatibility": true
+  "markdown.extension.toc.githubCompatibility": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
