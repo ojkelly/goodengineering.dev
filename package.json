@@ -122,7 +122,7 @@
     "history": "^4.7.2",
     "html-entities": "^1.2.1",
     "lodash": "^4.17.11",
-    "marked": "^0.6.0",
+    "marked": "^0.7.0",
     "marksy": "^6.1.0",
     "mdx-deck": "^2.4.0",
     "mermaid": "^8.1.0",
